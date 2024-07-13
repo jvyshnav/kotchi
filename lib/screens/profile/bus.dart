@@ -55,6 +55,14 @@ class CreateDataPageState extends State<CreateDataPage> {
             'username': username, // Use the retrieved username
           });
 
+          await FirebaseFirestore.instance.collection(username).add({
+            'name': _nameController.text,
+            'bagColor': _bagColorController.text,
+            'age': int.parse(_ageController.text),
+            'umbrellaColor': _umbrellaColorController.text,
+            'username': username, // Use the retrieved username
+          });
+
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Data saved successfully!'),
